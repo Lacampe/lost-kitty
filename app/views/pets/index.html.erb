@@ -1,0 +1,25 @@
+<h1 class="text-center">List of all lost pets</h1>
+
+<div class="container">
+  <div class="row">
+    <% @pets.each do |pet| %>
+      <div class="col-sm-10 col-sm-offset-1 col-md-4">
+        <div class="card text-center">
+          <div class="card-header">
+            <%= pet.found_on.nil? ? 'This pet is still on the loose...' : 'This pet has been found!' %>
+          </div>
+          <div class="card-block">
+            <h4 class="card-title"><%= pet.name %></h4>
+            <p class="card-text">Last seen: <%= pet.address %></p>
+            <%= link_to 'See info', pet_path(pet), class: 'btn btn-primary' %>
+          </div>
+          <div class="card-footer text-muted">
+            <%= pet.found_on.nil? ? '' : "Found on: #{pet.found_on}" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to 'I lost my pet', new_pet_path %>
+</div>
+

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <%= simple_form_for(pet) do |f| %>
+      <%= f.input :name %>
+
+      <%= f.input :address %>
+
+      <%= f.input :category, collection: Pet.categories %>
+
+      <% unless pet.new_record? %>
+        <%= f.input :found_on %>
+      <% end %>
+
+      <%= f.button :submit %>
+
+    <% end %>
+    </div>
+  </div>
+</div>
